@@ -399,8 +399,8 @@ fluidPage(
                                              "►'Settings' generates a table of critical setings that can be recorded to help reproducibility",
                                              tags$br(),
                                              "►Code files and detailed help notes are available in a github repository", 
-                                             #tags$a (href="https://github.com/drclongstaff/Clotlysis_2019/blob/master/Clotlysis_CL_help_notes_2019.pdf", "Here")
-                                             tags$a (href="https://github.com/drclongstaff/clotlysisCL_2019_March2024/blob/master/Clotlysis-CL-help-notes-2019.pdf", "Here")
+                                             tags$a (href="https://github.com/drclongstaff/clotlysis/blob/main/Documents/Clotlysis-CL-help-notes-2019.pdf", "Here")
+                                             #tags$a (href="https://github.com/drclongstaff/clotlysisCL_2019_March2024/blob/master/Clotlysis-CL-help-notes-2019.pdf", "Here")
                                         )),
                   
                   #a png of the first page plots (is it necessary?)
