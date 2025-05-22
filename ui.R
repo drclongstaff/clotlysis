@@ -10,8 +10,11 @@ library(shinyWidgets)
 source("./Functions/Load_file.R")
 source("./Functions/Splin_calc.R")
 source("./Functions/Data_proc.R")
-source("./Functions/Plots_all.R")
-source("./Functions/Plot_one.R")
+#source("./Functions/Plots_all.R")
+#source("./Functions/Plot_one.R")
+source("./Functions/Plotsall.R")
+source("./Functions/Plotone.R")
+source("./Functions/Makeplot.R")
 
 #√ersion
 Thisvers <- "version 1.2.4" #this line is also in server
