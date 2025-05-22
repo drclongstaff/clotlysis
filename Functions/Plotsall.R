@@ -17,34 +17,3 @@ multi_plotFun <- function(PLATE, ROWNUM, TABRES) {
 }
 
 
-library(shiny)
-# plot module ----
-
-plot_ui <- function(id) {
-  ns <- NS(id)
-  card(
-    height = 450,
-    full_screen = TRUE, # is expandable
-    card_header(numericInput(ns("numrows"), label = "Plot number of rows", value = 3, min = 1, step = 1),
-      class = "bg-info"
-    ),
-    card_body(
-      style = "background-color: #FAFBFB  ;",
-      tagList(
-        plotOutput(ns("plot"))
-      )
-    )
-  )
-}
-
-plot_server <- function(id, procfile, resfile) { # use df or procfile here or resfile or myRes?
-
-  moduleServer(id, function(input, output, session) {
-    plot <- reactive({
-      multi_plotFun(procfile(), input$numrows, resfile())
-    })
-    output$plot <- renderPlot({
-      plot()
-    })
-  })
-}
