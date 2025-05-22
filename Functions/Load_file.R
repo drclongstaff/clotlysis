@@ -5,10 +5,10 @@ load_file <- function(NAME, PATH, SHEET){
   
   ext <- tools::file_ext(NAME)
   switch(ext,
-         "xlsx"= readxl::read_excel(PATH, SHEET),
-         csv = vroom::vroom(PATH, delim = ",", show_col_types = FALSE),
-         tsv = vroom::vroom(PATH, delim = "\t"),
-         txt = vroom::vroom(PATH, show_col_types = FALSE),
+         "xlsx"= readxl::read_excel(PATH, SHEET, .name_repair = "universal"),
+         csv = vroom::vroom(PATH, delim = ",", show_col_types = FALSE, .name_repair = "universal"),
+         tsv = vroom::vroom(PATH, delim = "\t", .name_repair = "universal"),
+         txt = vroom::vroom(PATH, show_col_types = FALSE, .name_repair = "universal"),
          validate("Invalid file. Please upload a data file")
         )
     }
