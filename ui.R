@@ -14,11 +14,12 @@ source("./Functions/Plots_all.R")
 source("./Functions/Plot_one.R")
 
 #√ersion
-vers <- "version 1.2.4" #this line is also in server
+Thisvers <- "version 1.2.4" #this line is also in server
+Thisapp <- "ClotLysisCL_2019"
 
 fluidPage(
   includeCSS("./www/styles3.css"), #make a few changes to the colours and fonts
-  titlePanel (h2("ClotLysisCL_2019",  align = "center")),
+  titlePanel (h2(Thisapp,  align = "center")),
                
   sidebarLayout(#position="right",
     
@@ -217,7 +218,7 @@ fluidPage(
                         tags$br(),
                         wellPanel(style="background: #EFF5F8", 
                        tags$i("Please contact me with issues relating to:"),
-                       helpText(h5("ClotlysisCL_2019", vers,
+                       helpText(h5(Thisapp, Thisvers,
                                    " last accessed", Sys.Date()),
                                 tags$a(href="mailto: drclongstaff@gmail.com", "drclongstaff@gmail.com")),
                        
@@ -419,7 +420,7 @@ fluidPage(
                                       tags$br(),
                                       tags$br(),
                                       tags$i("Please contact me with issues relating to:"),
-                                      helpText(h5("Clotlysis_2019", vers,
+                                      helpText(h5(Thisapp, Thisvers,
                                                   " last accessed", Sys.Date()),
                                                tags$a(href="mailto: drclongstaff@gmail.com", "drclongstaff@gmail.com")),
                                       tags$a(href="https://drclongstaff.github.io/shiny-clots/", "Links to other apps")

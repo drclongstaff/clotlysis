@@ -1,5 +1,7 @@
 options(shiny.maxRequestSize=30*1024^2)
-vers <- "version 1.2.4" #this line is also in ui
+#√ersion
+Thisvers <- "version 1.2.4" #this line is also in server
+Thisapp <- "ClotLysisCL_2019"
 
 function(input, output){
  
@@ -400,7 +402,7 @@ function(input, output){
           
           #make a matrix 4 columns, 10 rows to show as a table
            setTable<-matrix(c( 
-             "ClotlysisCL_2019", vers, "", "",
+             Thisapp, Thisvers, "", "",
              "Date", format(Sys.Date(), "%d %b %Y"), "Time", format(Sys.time(), "%X"),
              
              "Read interval s", readData()[2,1]-readData()[1,1],  "Chosen % clotting or lysis", input$ini,
