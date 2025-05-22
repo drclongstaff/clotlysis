@@ -210,9 +210,11 @@ fluidPage(
                          wellPanel(style="background: #EFF5F8", 
                         helpText(h5("Please cite this reference if you find the app useful:")),
                         #tags$br(),
-                        helpText(h5("Longstaff C, Development of a Shiny app tool to simplify and standardize the analysis 
-                                   of hemostasis assay data: 
-                                   communication from the SSC of the ISTH, J Thromb Haemost, 15: 1044-6, 2017.  DOI 10.1111/jth.13656"))
+                        helpText(h6(
+                          tags$i("Longstaff C, Development of a Shiny app tool to simplify and standardize the analysis
+              of hemostasis assay data: communication from the SSC of the ISTH, J Thromb Haemost, 15: 1044-6, 2017"),
+                          tags$a(href = "https://onlinelibrary.wiley.com/doi/10.1111/jth.13656", "DOI 10.1111/jth.13656"))
+                                 )
                          ),
                         
                         tags$br(),
@@ -220,12 +222,13 @@ fluidPage(
                        tags$i("Please contact me with issues relating to:"),
                        helpText(h5(Thisapp, Thisvers,
                                    " last accessed", Sys.Date()),
-                                tags$a(href="mailto: drclongstaff@gmail.com", "drclongstaff@gmail.com")),
+                                tags$a(href="mailto: drclongstaff@gmail.com", "drclongstaff@gmail.com")
+                               ),
                        
-                       helpText(h5("You may be interested in a simple version of this clotlysis app and other apps that 
-                                   are useful for clotting only. ")),
-                       
-                       tags$a(href="https://drclongstaff.github.io/shiny-clots/", "Links to other apps")
+                       helpText(h5("You may be interested in a simple version of this clotlysis app and other hemostasis data analysis apps ")),
+                       tags$a(href = "https://drclongstaff.github.io/shiny-clots/", "Links to other apps and help notes"),
+                       tags$br(),
+                       tags$a(href = "https://www.youtube.com/@colinlongstaff7270", "Youtube channel of help videos")
                               )
                       
                         ) #end of conditional panel 7
