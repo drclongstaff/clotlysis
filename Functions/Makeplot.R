@@ -25,10 +25,13 @@ plotmake_fun <- function(myPlate, Time, TabRes, mint, maxt, maxy, samples, k) {
   # legend including the well number and name
   legend(TabRes[k, 3], maxy * 1.2, xjust = TabRes[k, 3] / maxt, bty = "n", paste0(samples[k], "=", k), cex = 2)
 
-  # dashed lines showing the baseline and times
-  abline("v" = TabRes[k, 3], lty = 2)
-  abline("v" = TabRes[k, 7], lty = 2)
-  abline("v" = TabRes[k, 8], lty = 2)
-  abline("h" = TabRes[k, 2], lty = 2)
-  abline("v" = TabRes[k, 11], lty = 2)
+  #results lines for baseline and times
+  abline("v"= TabRes[k,3], lty=2)
+  abline("v"= TabRes[k,7], lty=2)
+  abline("v"= TabRes[k,8], lty=2)
+  abline("h"= TabRes[k,2], lty = 2)
+  abline("v"= TabRes[k,15], lty = 2)
+  abline("h"= TabRes[k,4], lty = 2)
+  abline("h"= TabRes[k,9], lty = 2)
+  abline("h"= TabRes[k,5], lty = 2)
 }
