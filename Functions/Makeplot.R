@@ -1,5 +1,5 @@
 # This is the recipe for making a plot
-plotmake_fun <- function(myPlate, Time, TabRes, mint, maxt, maxy, samples, k) {
+plotmake_fun <- function(myPlate, Time, TabRes, mint, maxt, maxy, samples, k, axx, axy) {
   Time <- myPlate[[1]] # Time is first column
   plateData <- myPlate[, -1] # All absorbance data without time column
   absWells <- length(plateData[1, ])
@@ -12,7 +12,7 @@ plotmake_fun <- function(myPlate, Time, TabRes, mint, maxt, maxy, samples, k) {
   yi <- plateData[[k]]
   plot <- plot(Time, yi,
     type = "l", col = "grey40", lwd = 2, xlim = c(0, maxt),
-    ylim = c(0, maxy * 1.2), ylab = "Absorbance"
+    ylim = c(0, maxy * 1.2), ylab = "Absorbance", xaxt=axx, yaxt=axy
   )
 
   points(Time, yi, pch = 21, col = "slategrey")
