@@ -15,7 +15,7 @@ source("./Functions/Plotone.R")
 source("./Functions/Makeplot.R")
 
 # √ersion
-Thisvers <- "version 1.2.5" # this line is also in server
+Thisvers <- "version 1.2.6" # this line is also in server
 Thisapp <- "ClotLysisCL_2019"
 
 fluidPage(
