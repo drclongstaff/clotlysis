@@ -21,8 +21,8 @@ DatSPdf <- cbind("Ts"=DatSP$x[1:N], DatSPdf)
  
  }
 
-
-#myPlateS <- allSpline(NULL, 50, 0, 5000, myPlate)
+#"spline" = allSpline(NULL, input$npoints, input$zero, input$trunc, procdat0())
+#myPlateS <- allSpline(NULL, 50, 0, 500, myPlate)
 
 #multi_plotsimple(myPlateS, 3)
 
