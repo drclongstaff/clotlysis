@@ -1,6 +1,6 @@
 options(shiny.maxRequestSize = 30 * 1024^2)
 # √ersion
-Thisvers <- "version 1.2.6a" # this line is also in server
+Thisvers <- "version 1.2.6b" # this line is also in server
 Thisapp <- "ClotLysisCL_2019"
 
 function(input, output) {
