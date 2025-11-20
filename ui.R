@@ -13,9 +13,10 @@ source("./Functions/Data_proc.R")
 source("./Functions/Plotsall.R")
 source("./Functions/Plotone.R")
 source("./Functions/Makeplot.R")
+source("./Functions/Session_info.R")
 
 # √ersion
-Thisvers <- "version 1.2.6a" # this line is also in server
+Thisvers <- "version 1.2.7" # this line is also in server
 Thisapp <- "ClotLysisCL_2019"
 
 fluidPage(
@@ -107,7 +108,7 @@ fluidPage(
           fluidRow(
             column(4, offset = 0, numericInput("npoints", "n points", min = 2, step = 5, value = 100)),
             column(4, numericInput("zero", "start", min = 0, step = 5, value = 0)),
-            column(4, numericInput("trunc", "truncate", min = 0, step = 10, value = 1000))
+            column(4, numericInput("trunc", "truncate", min = 0, step = 10, value = 0))
           )
         )
       ), # end of conditional panel 1
@@ -315,7 +316,15 @@ fluidPage(
             column(6, h5(uiOutput("which1"))),
             column(2, h5(uiOutput("whichsheet")))
           ),
-          tableOutput("settings")
+          tableOutput("settings"),
+          tags$h4("Packages and versions"),
+          textOutput("text4"),
+          fluidRow(
+            column(3, tags$h5("Base packages:")),
+            column(9, tags$h5(textOutput("text5")))
+            ),
+          tags$h5("Other packages"),
+          tableOutput("session")
         ), # end of panel 6
 
         tabPanel("Help",

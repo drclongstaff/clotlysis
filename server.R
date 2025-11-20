@@ -1,6 +1,6 @@
 options(shiny.maxRequestSize = 30 * 1024^2)
 # √ersion
-Thisvers <- "version 1.2.6b" # this line is also in server
+Thisvers <- "version 1.2.7" # this line is also in server
 Thisapp <- "ClotLysisCL_2019"
 
 function(input, output) {
@@ -456,4 +456,28 @@ function(input, output) {
     setTable <- setsTab()
     setTable
   })
+  
+  output$text4 <- renderText({
+    This_session[[1]]
+  })
+  
+  output$text5 <- renderText({
+    This_session[[2]]
+  })
+  
+  output$session <- renderTable({
+    
+    # Extract other packages with versions
+    other_packages <- session$otherPkgs
+    if (!is.null(other_packages)) {
+      other_pkg_info <- data.frame(
+        Package = names(other_packages),
+        Version = sapply(other_packages, function(x) x$Version),
+        stringsAsFactors = FALSE
+      )
+    } else {
+      other_pkg_info <- data.frame(Package = character(0), Version = character(0))
+    }
+  })
+  
 }
