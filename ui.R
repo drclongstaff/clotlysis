@@ -16,7 +16,7 @@ source("./Functions/Makeplot.R")
 source("./Functions/Session_info.R")
 
 # √ersion
-Thisvers <- "version 1.2.7" # this line is also in server
+Thisvers <- "version 1.2.8" # this line is also in server
 Thisapp <- "ClotLysisCL_2019"
 
 fluidPage(

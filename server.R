@@ -1,6 +1,6 @@
 options(shiny.maxRequestSize = 30 * 1024^2)
 # √ersion
-Thisvers <- "version 1.2.7" # this line is also in server
+Thisvers <- "version 1.2.8" # this line is also in server
 Thisapp <- "ClotLysisCL_2019"
 
 function(input, output) {
@@ -231,7 +231,8 @@ function(input, output) {
 
     downcurve <- c(decayAbs, decayTime, decayPoint + pointmax, lastPoint, endTime, AUC)
   }
-
+  
+  #Use purrr and imap to complete calculations using functions
   TabRes <- reactive({
     whichPlate <- procdat()
     ini <- input$ini * .01
@@ -270,43 +271,7 @@ function(input, output) {
       mutate(across(where(is.numeric), \(x) round(x, digits = 4)))
   })
   
-  # Using Purrr to generate the table of results
-  TabRes_old <- reactive({
-    ini <- input$ini * .01
-    thresh <- input$thresh
-
-    Time <- procdat()[[1]]
-    # Time <- readData()[[1]]
-    TabRes <- procdat()[-1] %>%
-      map_df(~ data.frame(
-        firstAbs = MaxandMin(.x, Time, ini, thresh)[1],
-        min.abs = MaxandMin(.x, Time, ini, thresh)[2],
-        max.abs = MaxandMin(.x, Time, ini, thresh)[3],
-        delta.abs = MaxandMin(.x, Time, ini, thresh)[4],
-        max.time = MaxandMin(.x, Time, ini, thresh)[5],
-        pointmax = MaxandMin(.x, Time, ini, thresh)[6],
-        clot.time = uppity(.x, Time, ini, thresh)[2],
-        clot.abs = uppity(.x, Time, ini, thresh)[4],
-        startPoint = uppity(.x, Time, ini, thresh)[5],
-        lys.abs = downy(.x, Time, ini, thresh)[1],
-        lys.time = downy(.x, Time, ini, thresh)[2],
-        decayPoint = downy(.x, Time, ini, thresh)[3],
-        endPoint = downy(.x, Time, ini, thresh)[4],
-        end.time = downy(.x, Time, ini, thresh)[5],
-        AUC = downy(.x, Time, ini, thresh)[6]
-      )) %>%
-      mutate(clotTolys.time = lys.time - clot.time) %>%
-      add_column(Wells = colnames(readData()[-1]), .before = TRUE) %>%
-      select(
-        Wells, min.abs, clot.time, clot.abs, max.abs, delta.abs, max.time, lys.time, lys.abs,
-        clotTolys.time, startPoint, pointmax, decayPoint, endPoint, end.time, AUC
-      ) %>%
-      mutate(across(where(is.numeric), \(x) round(x, digits = 4)))
-    # No clipboard for online app
-    # clipr::write_clip(TabRes)
-    TabRes
-  })
-
+ 
   # for multiple and single plots
   plot <- reactive({
     multi_plotFun(procdat(), input$numrows, TabRes())
