@@ -1776,15 +1776,15 @@
       "description": {
         "Package": "purrr",
         "Title": "Functional Programming Tools",
-        "Version": "1.0.4",
-        "Authors@R": "c(\n    person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = c(\"aut\", \"cre\"),\n           comment = c(ORCID = \"0000-0003-4757-117X\")),\n    person(\"Lionel\", \"Henry\", , \"lionel@posit.co\", role = \"aut\"),\n    person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"),\n           comment = c(ROR = \"03wc8by49\"))\n  )",
+        "Version": "1.1.0",
+        "Authors@R": "c(\n    person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = c(\"aut\", \"cre\"),\n           comment = c(ORCID = \"0000-0003-4757-117X\")),\n    person(\"Lionel\", \"Henry\", , \"lionel@posit.co\", role = \"aut\"),\n    person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"),\n           comment = c(ROR = \"https://ror.org/03wc8by49\"))\n  )",
         "Description": "A complete and consistent functional programming toolkit for\n    R.",
         "License": "MIT + file LICENSE",
         "URL": "https://purrr.tidyverse.org/, https://github.com/tidyverse/purrr",
         "BugReports": "https://github.com/tidyverse/purrr/issues",
-        "Depends": "R (>= 4.0)",
+        "Depends": "R (>= 4.1)",
         "Imports": "cli (>= 3.6.1), lifecycle (>= 1.0.3), magrittr (>= 1.5.0),\nrlang (>= 1.1.1), vctrs (>= 0.6.3)",
-        "Suggests": "covr, dplyr (>= 0.7.8), httr, knitr, lubridate, rmarkdown,\ntestthat (>= 3.0.0), tibble, tidyselect",
+        "Suggests": "carrier (>= 0.2.0), covr, dplyr (>= 0.7.8), httr, knitr,\nlubridate, mirai (>= 2.4.0), rmarkdown, testthat (>= 3.0.0),\ntibble, tidyselect",
         "LinkingTo": "cli",
         "VignetteBuilder": "knitr",
         "Biarch": "true",
@@ -1795,12 +1795,12 @@
         "Encoding": "UTF-8",
         "RoxygenNote": "7.3.2",
         "NeedsCompilation": "yes",
-        "Packaged": "2025-01-29 21:33:56 UTC; hadleywickham",
-        "Author": "Hadley Wickham [aut, cre] (<https://orcid.org/0000-0003-4757-117X>),\n  Lionel Henry [aut],\n  Posit Software, PBC [cph, fnd] (03wc8by49)",
+        "Packaged": "2025-07-10 12:22:53 UTC; hadleywickham",
+        "Author": "Hadley Wickham [aut, cre] (ORCID:\n    <https://orcid.org/0000-0003-4757-117X>),\n  Lionel Henry [aut],\n  Posit Software, PBC [cph, fnd] (ROR: <https://ror.org/03wc8by49>)",
         "Maintainer": "Hadley Wickham <hadley@posit.co>",
         "Repository": "CRAN",
-        "Date/Publication": "2025-02-05 18:00:01 UTC",
-        "Built": "R 4.4.1; aarch64-apple-darwin20; 2025-02-05 18:50:51 UTC; unix",
+        "Date/Publication": "2025-07-10 17:50:02 UTC",
+        "Built": "R 4.4.1; aarch64-apple-darwin20; 2025-07-14 22:54:27 UTC; unix",
         "Archs": "purrr.so.dSYM"
       }
     },
@@ -2582,16 +2582,19 @@
       "checksum": "8730e485348ed91c0156f13e6736121b"
     },
     "Functions/Makeplot.R": {
-      "checksum": "e8d20cc8dded20c381bd745d9c7c3464"
+      "checksum": "7262dcf86e4a78172cfb76714b239f62"
     },
     "Functions/Plotone.R": {
-      "checksum": "2213102852a4e38d388bbdb75561f0a0"
+      "checksum": "9a8092b3c72f2ee19102abf7fe747581"
     },
     "Functions/Plotsall.R": {
-      "checksum": "ed317da769bffcb1693029968474e0bc"
+      "checksum": "26e3dae28229739a61ead24ba3c8881b"
+    },
+    "Functions/Session_info.R": {
+      "checksum": "a7e26ff1b7e647f62bdc3b3379907d02"
     },
     "Functions/Splin_calc.R": {
-      "checksum": "58d492274ad01fbc6df3024b95a4e7a1"
+      "checksum": "759463e685cdd63cade25dced67dd1e6"
     },
     "LICENSE": {
       "checksum": "0fd93bf0d64409d957fa91cf78c61f4e"
@@ -2600,10 +2603,10 @@
       "checksum": "eed1996976d4345e446d6e0fab17d93d"
     },
     "server.R": {
-      "checksum": "d88e3dd8761751da176b1a4baf311b53"
+      "checksum": "0e265a24e4c398a3278d7a4fad48011a"
     },
     "ui.R": {
-      "checksum": "24c01092ddc1c5ef99ab32a7fb6ef527"
+      "checksum": "7c792b35b9b4bc0b61b2752b2c5ce8b5"
     },
     "www/PlotTable.png": {
       "checksum": "f8de79e2fae12b0f9b321525efea887d"
