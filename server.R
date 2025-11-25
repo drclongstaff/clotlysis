@@ -237,7 +237,7 @@ function(input, output) {
     whichPlate <- procdat()
     ini <- input$ini * .01
     thresh <- input$thresh
-    args_list <- list(whichPlate, ini = 0.5, thresh = 0.05)
+    args_list <- list(whichPlate, ini, thresh)
     
     moreRes <- whichPlate[ -1] |>
       imap(~ {
@@ -260,7 +260,7 @@ function(input, output) {
           endPoint = resultsd[4],
           end.time = resultsd[5],
           clotTolys.time = resultsd[2] - resultsu[2],
-          AUC = resultsd[5]
+          AUC = resultsd[6]
         )
       }) |>
       list_rbind() |> 
