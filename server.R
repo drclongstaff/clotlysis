@@ -126,7 +126,7 @@ function(input, output) {
   # Then purrr makes the final table of results
 
   # first min and max for the basics of the curve analysis
-  MaxandMin <- function(m, Time, ini, thresh) {
+  MaxandMin <- function(m, aplate, ini, thresh) {
     minAbs <- switch(input$abini,
       "global zero" = input$back,
       "nth absorbance" = m[input$arow],
@@ -134,7 +134,7 @@ function(input, output) {
     )
     # This min abs is presented without the offset because it's not used for clot or lys calculations
     # It is used for plotting
-
+    Time <- aplate[[1]]
     firstA <- m[1]
     pointmax <- which.max(m)
 
@@ -148,13 +148,13 @@ function(input, output) {
   }
 
   # uppity analysis the clotting part
-  uppity <- function(u, Time, ini, thresh) {
+  uppity <- function(u, aplate, ini, thresh) {
     minAbs <- switch(input$abini,
       "global zero" = input$back,
       "nth absorbance" = u[input$arow],
       "min+offset" = min(u, na.rm = TRUE) + input$off
     )
-
+    Time <- aplate[[1]]
     maxAbs <- max(u, na.rm = TRUE)
 
     pointmax <- which.max(u)
@@ -181,13 +181,14 @@ function(input, output) {
   }
 
   # and here we analyse the downside of the curve
-  downy <- function(d, Time, ini, thresh) {
+  downy <- function(d, aplate, ini, thresh) {
     minAbs <- switch(input$abini,
       "global zero" = input$back,
       "nth absorbance" = d[input$arow],
       "min+offset" = min(d, na.rm = TRUE) + input$off
     )
-
+    
+    Time <- aplate[[1]]
     # Need to define how to get the max abs
     maxAbs <- max(d, na.rm = TRUE)
 
@@ -231,8 +232,46 @@ function(input, output) {
     downcurve <- c(decayAbs, decayTime, decayPoint + pointmax, lastPoint, endTime, AUC)
   }
 
-  # Using Purrr to generate the table of results
   TabRes <- reactive({
+    whichPlate <- procdat()
+    ini <- input$ini * .01
+    thresh <- input$thresh
+    args_list <- list(whichPlate, ini = 0.5, thresh = 0.05)
+    
+    moreRes <- whichPlate[ -1] |>
+      imap(~ {
+        resultsm <- do.call(MaxandMin,  c(list(.x), args_list))
+        resultsu <- do.call(uppity, c(list(.x), args_list))
+        resultsd <- do.call(downy, c(list(.x), args_list))
+        data.frame(
+          Wells = .y,
+          min.abs = resultsm[2],
+          max.abs = resultsm[3],
+          delta.abs = resultsm[4],
+          max.time = resultsm[5],
+          pointmax = resultsm[6],
+          clot.time = resultsu[2],
+          clot.abs = resultsu[3],
+          startPoint = resultsu[5],
+          lys.abs = resultsd[1],
+          lys.time = resultsd[2],
+          decayPoint = resultsd[3],
+          endPoint = resultsd[4],
+          end.time = resultsd[5],
+          clotTolys.time = resultsd[2] - resultsu[2],
+          AUC = resultsd[5]
+        )
+      }) |>
+      list_rbind() |> 
+      select(
+        Wells, min.abs, clot.time, clot.abs, max.abs, delta.abs, max.time, lys.time, lys.abs,
+        clotTolys.time, startPoint, pointmax, decayPoint, endPoint, end.time, AUC
+      ) %>%
+      mutate(across(where(is.numeric), \(x) round(x, digits = 4)))
+  })
+  
+  # Using Purrr to generate the table of results
+  TabRes_old <- reactive({
     ini <- input$ini * .01
     thresh <- input$thresh
 
