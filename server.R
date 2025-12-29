@@ -118,7 +118,7 @@ function(input, output) {
   output$contents <- DT::renderDT({
     TabRes() %>%
       mutate(across(where(is.numeric), \(x) round(x, digits = 3))) %>%
-      select(c(1:10, 15:16, 11:14))
+      select(1:12)
   })
 
 
@@ -358,43 +358,37 @@ function(input, output) {
   })
 
   # results to go with single plot
-  output$curveTable <- renderTable({
-    if (is.null(input$colmnames)) {
-      return(NULL)
-    } # To stop this section running and producing an error before the data has uploaded
-    TabNames <- colnames(TabRes())
-    ColNam <- c("Parameter", "Result")
-
-    All.Res <- TabRes() %>%
-      mutate(across(where(is.numeric), \(x) round(x, digits = 3))) %>%
-      filter(Wells == input$colmnames) %>%
-      select(c(1:10, 15:16, 11:14))
-    All.Res.Tab <- cbind(TabNames[c(1:10, 15:16, 11:14)], t(All.Res))
-    colnames(All.Res.Tab) <- ColNam
-
-    Generation.Res <- TabRes() %>%
-      mutate(across(where(is.numeric), \(x) round(x, digits = 3))) %>%
-      filter(Wells == input$colmnames) %>%
-      select(c(1:7, 10))
-    Generation.Res.Tab <- cbind(TabNames[c(1:7, 10)], t(Generation.Res))
-    colnames(Generation.Res.Tab) <- ColNam
-
-    Decay.Res <- TabRes() %>%
-      mutate(across(where(is.numeric), \(x) round(x, digits = 3))) %>%
-      filter(Wells == input$colmnames) %>%
-      select(1, 5:7, 8:10, 15:16)
-    Decay.Res.Tab <- cbind(TabNames[c(1, 5:7, 8:10, 15:16)], t(Decay.Res))
-    colnames(Decay.Res.Tab) <- ColNam
-
-    curveDat <- switch(input$curveRes,
-      "All" = All.Res.Tab,
-      "Clotting" = Generation.Res.Tab,
-      "Lysis" = Decay.Res.Tab
+  output$curveTable<-renderTable({
+    if(is.null(input$colmnames)){return(NULL)} # To stop this section running and producing an error before the data has uploaded
+    TabNames<-colnames(TabRes())
+    TabRes <- TabRes()
+    ColNam<-c("Parameter", "Result")
+    
+    All.Res<-TabRes %>% 
+      filter(Well == input$colmnames) %>% select(c(1:12))
+    All.Res.Tab<-cbind(TabNames[c(1:12)], t(All.Res))
+    colnames(All.Res.Tab)<-ColNam
+    
+    Generation.Res<-TabRes %>% 
+      filter(Well == input$colmnames) %>% select(c(1:7))
+    Generation.Res.Tab<-cbind(TabNames[c(1:7)], t(Generation.Res))
+    colnames(Generation.Res.Tab)<-ColNam
+    
+    Decay.Res<-TabRes %>% 
+      filter(Well == input$colmnames) %>% select(1,7:12)
+    Decay.Res.Tab<-cbind(TabNames[c(1,7:12)], t(Decay.Res))
+    colnames(Decay.Res.Tab)<-ColNam
+    
+    curveDat<-switch(input$curveRes,
+                     "All"= All.Res.Tab,
+                     "Clotting"= Generation.Res.Tab,
+                     "Lysis"= Decay.Res.Tab
     )
   })
   # Get the names from results table
   varnames <- reactive({
-    mynames <- colnames(TabRes()[c(1:10, 15:16, 11:14)])
+    #mynames <- colnames(TabRes()[c(1:10, 15:16, 11:14)])
+    mynames <- colnames(TabRes()[1:17])
   })
 
   # Find data for graphs in Explore tab
@@ -414,7 +408,7 @@ function(input, output) {
     } # To stop this section running and producing an error before the data has uploaded
     selectInput("mynamesy",
       label = h5("On Y axis"),
-      choices = varnames(), selected = colnames(TabRes()[8])
+      choices = varnames(), selected = colnames(TabRes()[9])
     )
   })
 
@@ -425,7 +419,7 @@ function(input, output) {
     } # To stop this section running and producing an error before the data has uploaded
     selectInput("mynamesheat",
       label = h5("Choose data for heatmap"),
-      choices = varnames(), selected = colnames(TabRes()[8])
+      choices = varnames(), selected = colnames(TabRes()[9])
     )
   })
 
