@@ -16,7 +16,7 @@ source("./Functions/Makeplot.R")
 source("./Functions/Session_info.R")
 
 # √ersion
-Thisvers <- "version 1.2.8" # this line is also in server
+Thisvers <- "version 1.3.0" # this line is also in server
 Thisapp <- "ClotLysisCL_2019"
 
 fluidPage(
@@ -260,12 +260,12 @@ fluidPage(
           radioButtons(
             inputId = "tabRes", label = h4("Select a parameter", align = "center"),
             choices = c(
-              "Column names" = 1, "Chosen zero" = 2, "Time to % clotting   " = 3, "Reading at % clotting" = 4,
-              "Reading at peak      " = 5, "Reading peak-zero" = 6,
-              "Time to peak from zero" = 7, "Time to % lysis from zero" = 8,
-              "Reading at % lysis" = 9, "Time clotting to % lysis" = 10,
-              "Time to full lysis " = 15, "AUC" = 16
-            ), selected = 8, inline = TRUE, width = "100%"
+              "Column names" , "Chosen zero" , "Time to % clotting" , "Reading at % clotting",
+              "Reading at peak" , "Reading peak-zero" ,
+              "Time to peak from zero" , "Time to % lysis from zero" ,
+              "Reading at % lysis" , "Time clotting to % lysis" ,
+              "Time to full lysis" , "AUC" 
+            ), selected = "Time to % lysis from zero", inline = TRUE, width = "100%"
           ),
           # text3 displayes the results selected
           h5(textOutput("text3")),
