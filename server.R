@@ -244,6 +244,7 @@ function(input, output) {
     )
     
     ifelse(downAbs[length(downAbs)] >=pcChange, lysPoint <- lastPoint, lysPoint <- decayPoint+pointmax)
+    ifelse(downAbs[length(downAbs)] >=pcChange, decayTime <- NA, decayTime <- decayTime)
     
     downcurve <- c(decayAbs, decayTime, lysPoint, decayPoint, pointmax, lastPoint, endTime, AUC)
     
