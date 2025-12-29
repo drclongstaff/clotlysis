@@ -348,7 +348,7 @@ function(input, output) {
     )
     
     colnames(data) =as.character(1:(length(data)/RowNum))
-    clipr::write_clip(data)
+    #clipr::write_clip(data)
     data
     
   })
