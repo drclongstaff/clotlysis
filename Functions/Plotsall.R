@@ -1,19 +1,15 @@
-multi_plotFun <- function(PLATE, ROWNUM, TABRES) {
+#function for multiple plots of all data
+multi_plotFun <- function(aPlate, rowNum, tabRes) {
   # Set up some plotting parameters
-  TabRes <- TABRES
-  RowNum <- ROWNUM
-
-  plateData <- PLATE[, -1]
+  plateData <- aPlate[, -1]
   absWells <- length(plateData[1, ])
-  par(mfrow = c(RowNum, (absWells / RowNum))) # Organisation of multiple plots
+  maxy <- max(plateData, na.rm = TRUE)*1.1 # To set the maximum of the whole plate
+  par(mfrow = c(rowNum, (absWells / rowNum))) # Organisation of multiple plots
   par(mar = c(0.2, 0.2, 0.2, 0.2)) # Dimensions for figure
-
   # Generate the plots from plotmake_fun
   lapply(seq_along(plateData), function(k) {
-    # for(k in seq_along(plateData)){ #This is an alternative loop
-
-    plotmake_fun(PLATE, TabRes, k, axx="n", axy="n")
-  }) # remove this ')' with alternative loop
+    plotmake_fun(aPlate, tabRes, k, axx="n", axy="n", maxy)
+  }) 
 }
 
 
