@@ -401,6 +401,35 @@
         "Archs": "cli.so.dSYM"
       }
     },
+    "clipr": {
+      "Source": "CRAN",
+      "Repository": "http://cran.rstudio.com",
+      "description": {
+        "Type": "Package",
+        "Package": "clipr",
+        "Title": "Read and Write from the System Clipboard",
+        "Version": "0.8.0",
+        "Authors@R": "c(\n    person(\"Matthew\", \"Lincoln\", , \"matthew.d.lincoln@gmail.com\", role = c(\"aut\", \"cre\"),\n           comment = c(ORCID = \"0000-0002-4387-3384\")),\n    person(\"Louis\", \"Maddox\", role = \"ctb\"),\n    person(\"Steve\", \"Simpson\", role = \"ctb\"),\n    person(\"Jennifer\", \"Bryan\", role = \"ctb\")\n  )",
+        "Description": "Simple utility functions to read from and write to\n    the Windows, OS X, and X11 clipboards.",
+        "License": "GPL-3",
+        "URL": "https://github.com/mdlincoln/clipr,\nhttp://matthewlincoln.net/clipr/",
+        "BugReports": "https://github.com/mdlincoln/clipr/issues",
+        "Imports": "utils",
+        "Suggests": "covr, knitr, rmarkdown, rstudioapi (>= 0.5), testthat (>=\n2.0.0)",
+        "VignetteBuilder": "knitr",
+        "Encoding": "UTF-8",
+        "Language": "en-US",
+        "RoxygenNote": "7.1.2",
+        "SystemRequirements": "xclip (https://github.com/astrand/xclip) or xsel\n(http://www.vergenet.net/~conrad/software/xsel/) for accessing\nthe X11 clipboard, or wl-clipboard\n(https://github.com/bugaevc/wl-clipboard) for systems using\nWayland.",
+        "NeedsCompilation": "no",
+        "Packaged": "2022-02-19 02:20:21 UTC; mlincoln",
+        "Author": "Matthew Lincoln [aut, cre] (<https://orcid.org/0000-0002-4387-3384>),\n  Louis Maddox [ctb],\n  Steve Simpson [ctb],\n  Jennifer Bryan [ctb]",
+        "Maintainer": "Matthew Lincoln <matthew.d.lincoln@gmail.com>",
+        "Repository": "CRAN",
+        "Date/Publication": "2022-02-22 00:58:45 UTC",
+        "Built": "R 4.4.1; ; 2025-01-25 19:51:08 UTC; unix"
+      }
+    },
     "colorspace": {
       "Source": "CRAN",
       "Repository": "http://cran.rstudio.com",
@@ -2582,13 +2611,13 @@
       "checksum": "8730e485348ed91c0156f13e6736121b"
     },
     "Functions/Makeplot.R": {
-      "checksum": "7262dcf86e4a78172cfb76714b239f62"
+      "checksum": "322a8a17124b4a26182adf005e4dafdc"
     },
     "Functions/Plotone.R": {
-      "checksum": "9a8092b3c72f2ee19102abf7fe747581"
+      "checksum": "7bf4f60c68296949deef6213c213efed"
     },
     "Functions/Plotsall.R": {
-      "checksum": "26e3dae28229739a61ead24ba3c8881b"
+      "checksum": "1061a4cdb8cea8482fcc988889b6beee"
     },
     "Functions/Session_info.R": {
       "checksum": "a7e26ff1b7e647f62bdc3b3379907d02"
@@ -2603,10 +2632,10 @@
       "checksum": "eed1996976d4345e446d6e0fab17d93d"
     },
     "server.R": {
-      "checksum": "0e265a24e4c398a3278d7a4fad48011a"
+      "checksum": "4f3840915a6f7199747f95a6135cb720"
     },
     "ui.R": {
-      "checksum": "7c792b35b9b4bc0b61b2752b2c5ce8b5"
+      "checksum": "871bf4a6b7238fccd06aab65b2141697"
     },
     "www/PlotTable.png": {
       "checksum": "f8de79e2fae12b0f9b321525efea887d"
