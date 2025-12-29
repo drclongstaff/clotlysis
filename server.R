@@ -242,7 +242,7 @@ function(input, output) {
     ifelse((maxAbs<thresh | maxChange<thresh), decayTime <- downTime[decayPoint], 
            decayTime <- round(approx(downAbs, downTime, xout = decayAbs, ties = mean)$y, 3)
     )
-    
+    #some safety net for insufficient lysis
     ifelse(downAbs[length(downAbs)] >=pcChange, lysPoint <- lastPoint, lysPoint <- decayPoint+pointmax)
     ifelse(downAbs[length(downAbs)] >=pcChange, decayTime <- NA, decayTime <- decayTime)
     
