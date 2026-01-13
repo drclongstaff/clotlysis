@@ -1,6 +1,6 @@
 options(shiny.maxRequestSize = 30 * 1024^2)
 # √ersion
-Thisvers <- "version 1.3.0" # this line is also in server
+Thisvers <- "version 1.3.1" # this line is also in server
 Thisapp <- "ClotLysisCL_2019"
 
 function(input, output) {
@@ -11,7 +11,10 @@ function(input, output) {
       read.csv("./Data/ClotLysisDoses.csv")
     } else {
       (
-        load_file(input$data$name, input$data$datapath, input$sheet) %>%
+        load_file(input$data$name, input$data$datapath, input$sheet) |>  
+          janitor::remove_empty( which=c("rows", "cols"), 
+                                 cutoff=1, quiet=TRUE) |> #remove empty cols and rows
+          sapply( \(x) replace(x, x  %in% "", NA)) |> #replace empty cells with NA
           as.data.frame()
       )
     }
