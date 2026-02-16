@@ -1,3 +1,4 @@
+library(janitor)
 options(shiny.maxRequestSize = 30 * 1024^2)
 # √ersion
 Thisvers <- "version 1.3.1" # this line is also in server
