@@ -17,7 +17,7 @@ source("./Functions/Makeplot.R")
 source("./Functions/Session_info.R")
 
 # √ersion
-Thisvers <- "version 1.3.2a" # this line is also in server
+Thisvers <- "version 1.3.3" # this line is also in server
 Thisapp <- "ClotLysisCL_2019"
 
 fluidPage(
@@ -264,7 +264,7 @@ fluidPage(
               "Column names" , "Chosen zero" , "Time to % clotting" , "Reading at % clotting",
               "Reading at peak" , "Reading peak-zero" ,
               "Time to peak from zero" , "Time to % lysis from zero" ,
-              "Reading at % lysis" , "Time clotting to % lysis" ,
+              "Reading at % lysis" , "Time clotting to % lysis" , "Time peak to % lysis",
               "Time to full lysis" , "AUC" 
             ), selected = "Time to % lysis from zero", inline = TRUE, width = "100%"
           ),

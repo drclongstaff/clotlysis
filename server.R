@@ -1,6 +1,6 @@
 options(shiny.maxRequestSize = 30 * 1024^2)
 # √ersion
-Thisvers <- "version 1.3.2a" # this line is also in server
+Thisvers <- "version 1.3.3" # this line is also in server
 Thisapp <- "ClotLysisCL_2019"
 
 function(input, output) {
@@ -283,6 +283,7 @@ function(input, output) {
           lysAbs         = resultsd[1],
           lysTime        = resultsd[2],
           clotTolysTime  = resultsd[2]-resultsu[2],
+          peakTolysTime  = resultsd[2]-resultsm[5],
           endTime        = resultsd[7],
           AUC            = resultsd[8],
           startPoint     = resultsu[5],
@@ -345,6 +346,7 @@ function(input, output) {
                  "Time to % lysis from zero"= matrix(TabRes$lysTime, byrow=TRUE, nrow=RowNum),
                  "Reading at % lysis"       = matrix(TabRes$lysAbs, byrow=TRUE, nrow=RowNum),
                  "Time clotting to % lysis" = matrix(TabRes$clotTolysTime, byrow=TRUE, nrow=RowNum),
+                 "Time peak to % lysis"    = matrix(TabRes$peakTolysTime, byrow = TRUE, nrow=RowNum),
                  "Time to full lysis"      = matrix(TabRes$endTime, byrow=TRUE, nrow=RowNum),
                  "AUC"                      = matrix(TabRes$AUC, byrow=TRUE, nrow=RowNum)
                  
@@ -369,8 +371,8 @@ function(input, output) {
     ColNam<-c("Parameter", "Result")
     
     All.Res<-TabRes %>% 
-      filter(Well == input$colmnames) %>% select(c(1:12))
-    All.Res.Tab<-cbind(TabNames[c(1:12)], t(All.Res))
+      filter(Well == input$colmnames) %>% select(c(1:13))
+    All.Res.Tab<-cbind(TabNames[c(1:13)], t(All.Res))
     colnames(All.Res.Tab)<-ColNam
     
     Generation.Res<-TabRes %>% 
@@ -379,8 +381,8 @@ function(input, output) {
     colnames(Generation.Res.Tab)<-ColNam
     
     Decay.Res<-TabRes %>% 
-      filter(Well == input$colmnames) %>% select(1,7:12)
-    Decay.Res.Tab<-cbind(TabNames[c(1,7:12)], t(Decay.Res))
+      filter(Well == input$colmnames) %>% select(1,7:13)
+    Decay.Res.Tab<-cbind(TabNames[c(1,7:13)], t(Decay.Res))
     colnames(Decay.Res.Tab)<-ColNam
     
     curveDat<-switch(input$curveRes,
@@ -392,7 +394,7 @@ function(input, output) {
   # Get the names from results table
   varnames <- reactive({
     #mynames <- colnames(TabRes()[c(1:10, 15:16, 11:14)])
-    mynames <- colnames(TabRes()[1:17])
+    mynames <- colnames(TabRes()[1:18])
   })
 
   # Find data for graphs in Explore tab
