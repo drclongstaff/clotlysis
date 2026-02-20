@@ -1,6 +1,6 @@
 options(shiny.maxRequestSize = 30 * 1024^2)
 # √ersion
-Thisvers <- "version 1.3.3" # this line is also in server
+Thisvers <- "version 1.3.3a" # this line is also in server
 Thisapp <- "ClotLysisCL_2019"
 
 function(input, output) {
@@ -121,7 +121,7 @@ function(input, output) {
   output$contents <- DT::renderDT({
     TabRes() %>%
       mutate(across(where(is.numeric), \(x) round(x, digits = 3))) %>%
-      select(1:12)
+      select(1:13)
   })
 
 
