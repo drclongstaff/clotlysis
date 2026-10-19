@@ -17,12 +17,16 @@ source("./Functions/Makeplot.R")
 source("./Functions/Session_info.R")
 
 # √ersion
-Thisvers <- "version 1.3.3a" # this line is also in server
+Thisvers <- "version 1.3.3b" # this line is also in server
 Thisapp <- "ClotLysisCL_2019"
 
 fluidPage(
   includeCSS("./www/styles3.css"), # make a few changes to the colours and fonts
+  title = Thisapp,
   titlePanel(h2(Thisapp, align = "center")),
+  helpText(h3("App URL's are changing. Find the latest versions at the ", 
+              tags$a(href = "https://drclongstaff.github.io/shiny-clots/ ", "shiny-clots web page", target="_blank", rel="noopener noreferrer"),  align="center")),
+  
   sidebarLayout( # position="right",
 
     # sidebarPanel(style="background: #DCF0DC",
@@ -165,7 +169,7 @@ fluidPage(
         wellPanel(
           style = "background: #EFF5F8",
           # This is the explore panel
-          helpText(h3("Heat map or scatter plot")),
+          helpText(h4("Heat map or scatter plot")),
 
           # which plot to show
           radioButtons(
